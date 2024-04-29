@@ -1,4 +1,4 @@
-# HorizonPosSDK
+# MPosSDK
 
 ## Installation
 
@@ -57,7 +57,7 @@ All the following to build.gradle (app level)
 ```sh
 
 dependencies{
-  implementation 'net.blusalt:blusaltmpos:1.0'
+  implementation 'net.blusalt:blusaltmpos:1.0-10'
 }
 ```
 
