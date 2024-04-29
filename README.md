@@ -74,8 +74,13 @@ class MainActivity : AppActivityCompact {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main_pos)
-        Pos.getINSTANCE().startMPOSplugin(this, "", object : TransactionCompletedCallBack {
-            override fun onSuccess(terminalResponse: TerminalResponse?) {
+        Pos.getINSTANCE().startmPOSbluetoothSdk(this, "10.0", "mac", "tittle", object : TransactionCompletedCallBack {
+            override fun onSuccess(terminalResponse: String?) {
+                  val response = Gson().fromJson(
+                 terminalResponse,
+                TerminalInfoProcessor::class.java
+                )
+                Log.e("Result", terminalResponse!!)
 
             }
 
@@ -97,10 +102,11 @@ class MainActivity extends AppActivityCompact {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_pos);
 
-        Pos.getINSTANCE().startMPOSplugin(this, "", new TransactionCompletedCallBack() {
+        Pos.getINSTANCE().startmPOSbluetoothSdk(this, "10.0", "mac", "tittle", new TransactionCompletedCallBack() {
             @Override
-            public void onSuccess(TerminalResponse terminalResponse) {
-
+            public void onSuccess(String terminalResponse) {
+               TerminalInfoProcessor response = new Gson().fromJson(terminalResponse, TerminalInfoProcessor.class);
+                    Log.e("Result", response);
             }
 
             @Override
